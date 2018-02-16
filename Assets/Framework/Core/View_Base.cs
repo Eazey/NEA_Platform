@@ -32,12 +32,12 @@ public class View_Base : MonoBehaviour, IView
     public void Open()
     {
         gameObject.SetActive(true);
-        OpenView();
+        Init();
     }
 
     public void Close()
     {
-        CloseView();
+        Clear();
         gameObject.SetActive(false);
     }
 
@@ -46,12 +46,12 @@ public class View_Base : MonoBehaviour, IView
 
     }
 
-    protected virtual void OpenView()
+    protected virtual void Init()
     {
 
     }
 
-    protected virtual void CloseView()
+    protected virtual void Clear()
     {
 
     }
