@@ -25,30 +25,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MonoSingleton<T> : MonoBehaviour
-    where T : MonoSingleton<T>
+namespace EUIFramework
 {
-    private const string GAME_MANAGER = "Manager";
-
-    private static T _instance = null;
-
-    public static T GetInstance()
+    public class MonoSingleton<T> : MonoBehaviour
+        where T : MonoSingleton<T>
     {
-        if(_instance == null)
+        private const string GAME_MANAGER = "Manager";
+
+        private static T _instance = null;
+
+        public static T GetInstance()
         {
-            _instance = FindObjectOfType<T>();
-            if(_instance == null)
+            if (_instance == null)
             {
-                GameObject manager = GameObject.Find(GAME_MANAGER);
-                if (manager == null)
+                _instance = FindObjectOfType<T>();
+                if (_instance == null)
                 {
-                    Debug.LogError("Please check the pbject named 'Root' whether be created.");
-                    manager = new GameObject(GAME_MANAGER);
-                    DontDestroyOnLoad(manager);
+                    GameObject manager = GameObject.Find(GAME_MANAGER);
+                    if (manager == null)
+                    {
+                        Debug.LogError("Please check the pbject named 'Root' whether be created.");
+                        manager = new GameObject(GAME_MANAGER);
+                        DontDestroyOnLoad(manager);
+                    }
+                    _instance = manager.AddComponent<T>();
                 }
-                _instance = manager.AddComponent<T>();
             }
+            return _instance;
         }
-        return _instance;
     }
 }

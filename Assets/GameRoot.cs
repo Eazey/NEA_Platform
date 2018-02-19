@@ -2,8 +2,8 @@
 /* | ---   NEA_Platform   --- | */
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
-//  IView.cs
-//  Create on 2/16/2018
+//  GameRoot.cs
+//  Create on 2/17/2018
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
@@ -16,12 +16,24 @@
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * */
 /* Script Overview: 
- * 界面显示隐藏的接口
 /* * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-public interface IView
-{
-    ViewName Name { get; }
-    void Open();
-    void Close();
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using EUIFramework;
+
+public class GameRoot : MonoBehaviour {
+
+	// Bind Component 
+	void Awake () {
+        Debug.Log("Root!!!");
+    }
+	
+	// Init Function
+	void Start () {
+		
+	}
 }

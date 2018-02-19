@@ -2,8 +2,8 @@
 /* | ---   NEA_Platform   --- | */
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
-//  IView.cs
-//  Create on 2/16/2018
+//  TestView.cs
+//  Create on 2/17/2018
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
@@ -16,12 +16,30 @@
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * */
 /* Script Overview: 
- * 界面显示隐藏的接口
 /* * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-public interface IView
-{
-    ViewName Name { get; }
-    void Open();
-    void Close();
+using EUIFramework;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+
+public class TestView : View_Base {
+
+    void Awake()
+    {
+        ViewController.RegisterView(transform);
+    }
+
+    protected override void Init()
+    {
+        Debug.Log("Init");
+    }
+
+    protected override void Clear()
+    {
+        Debug.Log("Clear");
+    }
 }

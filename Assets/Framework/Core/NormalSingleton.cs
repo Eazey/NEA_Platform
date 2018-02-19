@@ -23,23 +23,27 @@ using System;
 using UnityEngine;
 using System.Reflection;
 
-public class NormalSingleton<T>
-    where T : NormalSingleton<T>
+namespace EUIFramework
 {
-    private NormalSingleton() { }
-
-    private static T _instance = null;
-
-    public static T GetInstance()
+    public class NormalSingleton<T>
+        where T : NormalSingleton<T>
     {
-        if(_instance == null)
+        private NormalSingleton() { }
+
+        private static T _instance = null;
+
+        public static T GetInstance()
         {
-            ConstructorInfo[] constructors = typeof(T).GetConstructors(BindingFlags.NonPublic | BindingFlags.Instance);
-            ConstructorInfo targetMethod = Array.Find(constructors, e => e.GetParameters().Length == 0);
-            if (targetMethod == null)
-                Debug.LogError("Please check '" + typeof(T).ToString() + "' whether exist private constructor.");
-            _instance = (T)targetMethod.Invoke(null);
+            if (_instance == null)
+            {
+                ConstructorInfo[] constructors = typeof(T).GetConstructors(BindingFlags.NonPublic | BindingFlags.Instance);
+                ConstructorInfo targetMethod = Array.Find(constructors, e => e.GetParameters().Length == 0);
+                if (targetMethod == null)
+                    Debug.LogError("Please check '" + typeof(T).ToString() + "' whether exist private constructor.");
+                _instance = (T)targetMethod.Invoke(null);
+            }
+            return _instance;
         }
-        return _instance;
     }
 }
+

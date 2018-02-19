@@ -2,8 +2,8 @@
 /* | ---   NEA_Platform   --- | */
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
-//  ViewName.cs
-//  Create on 2/16/2018
+//  TestButton.cs
+//  Create on 2/17/2018
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
@@ -16,18 +16,38 @@
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * */
 /* Script Overview: 
- * 界面名称枚举
 /* * * * * * * * * * * * * * * * * * * * * * * * * * */
 
+using EUIFramework;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum ViewName
-{
-    View_1,
-    View_2,
-    View_3,
+public class TestButton : MonoBehaviour {
+
+    [SerializeField]
+    private View_Base view;
+
+    private bool isOpen = false;
+
+	// Bind Component 
+	void Awake () {
+        Button btn = GetComponent<Button>();
+        btn.onClick.AddListener(() =>
+        {
+            if (!isOpen)
+                view.Open();
+            else
+                view.Close();
+
+            isOpen = !isOpen;
+        });
+	}
+	
+	// Init Function
+	void Start () {
+		
+	}
 }

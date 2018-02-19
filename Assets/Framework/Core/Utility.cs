@@ -2,8 +2,8 @@
 /* | ---   NEA_Platform   --- | */
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
-//  IView.cs
-//  Create on 2/16/2018
+//  Utility.cs
+//  Create on 2/19/2018
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
@@ -16,12 +16,24 @@
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * */
 /* Script Overview: 
- * 界面显示隐藏的接口
+ * 通用功能类
 /* * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-public interface IView
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace EUIFramework
 {
-    ViewName Name { get; }
-    void Open();
-    void Close();
+    public static class Utility
+    {
+        public static class Path
+        {
+           public static string ViewPath { get { return "View/"; } }
+        }
+    }
 }
+
+

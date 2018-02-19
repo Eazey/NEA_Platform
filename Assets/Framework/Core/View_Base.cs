@@ -25,34 +25,40 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-public class View_Base : MonoBehaviour, IView
+namespace EUIFramework
 {
-
-    public void Open()
+    public class View_Base : MonoBehaviour, IView
     {
-        gameObject.SetActive(true);
-        Init();
-    }
+        [SerializeField]
+        protected ViewName _viewName;
+        public ViewName Name { get { return _viewName; } }
 
-    public void Close()
-    {
-        Clear();
-        gameObject.SetActive(false);
-    }
+        public void Open()
+        {
+            gameObject.SetActive(true);
+            Init();
+        }
 
-    public void Transer(ViewName viewName)
-    {
+        public void Close()
+        {
+            Clear();
+            gameObject.SetActive(false);
+        }
 
-    }
+        protected void Transer(ViewName viewName)
+        {
+            Close();
+            ViewController.OpenView(viewName);
+        }
 
-    protected virtual void Init()
-    {
+        protected virtual void Init()
+        {
 
-    }
+        }
 
-    protected virtual void Clear()
-    {
+        protected virtual void Clear()
+        {
 
+        }
     }
 }
