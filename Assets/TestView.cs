@@ -30,7 +30,7 @@ public class TestView : View_Base {
 
     void Awake()
     {
-        ViewController.RegisterView(transform);
+        ViewController.RegisterAllView(transform);
     }
 
     protected override void Init()

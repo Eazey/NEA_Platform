@@ -31,7 +31,46 @@ namespace EUIFramework
     {
         public static class Path
         {
-           public static string ViewPath { get { return "View/"; } }
+            public static string ViewRoot { get { return "View/"; } }
+
+            public static string GetViewPath(string viewName)
+            {
+                return ConnectPath(ViewRoot, viewName);
+            }
+
+            public static string ConnectPath(string root, string subset)
+            {
+                string path = root + '/' + subset;
+                return path;
+            }
+        }
+
+
+        public static class View
+        {
+            public static GameObject InitUIObj(GameObject go)
+            {
+                RectTransform rect = go.GetComponent<RectTransform>();
+                if (rect != null)
+                {
+                    rect.anchoredPosition = Vector3.zero;
+                    rect.localRotation = Quaternion.identity;
+                    rect.localScale = Vector3.one;
+                    //rect.offsetMin = 0.5f * Vector2.one;
+                    //rect.offsetMax = 0.5f * Vector2.one;
+                }
+                go.layer = go.transform.parent.gameObject.layer;
+                go.name = NormalClone(go.name);
+
+                return go;
+            }
+        }
+
+        public static string NormalClone(string name)
+        {
+            if (name.Contains("(Clone)"))
+                name = name.Replace("(Clone)", "").Trim();
+            return name;
         }
     }
 }

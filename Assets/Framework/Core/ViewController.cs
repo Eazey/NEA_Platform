@@ -66,12 +66,20 @@ namespace EUIFramework
             if (_viewNameDic.ContainsKey(name))
                 result = true;
             else
-                Debug.LogError(name + " is not be found in dic.");
+                Debug.LogError(name + " is not be found in dic. Please check enum 'ViewName'.");
 
             return result;
         }
 
-        public static void RegisterView(Transform root)
+        private static void RegisterView(ViewName name, IView view)
+        {
+            if (_viewObjDic.ContainsKey(name))
+                Debug.LogError(name + " already exist in dic.");
+            else
+                _viewObjDic.Add(name, view);
+        }
+
+        public static void RegisterAllView(Transform root)
         {
             for (int i = 0; i < root.childCount; i++)
             {
@@ -91,12 +99,34 @@ namespace EUIFramework
         {
             if (isExistView(open))
             {
-                IView view = _viewObjDic[open];
-                view.Open();
+                IView target = _viewObjDic[open];
+                target.Open();
                 return;
             }
 
-            string path = Utility.Path.ViewPath + open.ToString();
+            if (!isExistViewName(open))
+                return;
+
+            string path = Utility.Path.GetViewPath(open.ToString());
+
+            GameObject go;
+            if (!AssetManager.ResourceLoadObj(path, out go))
+            {
+                Debug.LogError(path + ": have not be found prefab: " + open.ToString());
+                return;
+            }
+            go = Utility.View.InitUIObj(go);
+
+            IView view = go.GetComponent<IView>();
+            if (view == null)
+            {
+                Debug.LogError(open + ". The prefab not be found script inherit IView.");
+                return;
+            }
+
+            RegisterView(view.Name, view);
+
+            view.Open();
         }
 
         public static void CloseView(ViewName close)
