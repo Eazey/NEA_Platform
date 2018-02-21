@@ -27,7 +27,7 @@ using UnityEngine.UI;
 
 namespace EUIFramework
 {
-    public class View_Base : MonoBehaviour, IView
+    public class ViewBase : MonoBehaviour, IView
     {
         [SerializeField]
         protected ViewName _viewName;

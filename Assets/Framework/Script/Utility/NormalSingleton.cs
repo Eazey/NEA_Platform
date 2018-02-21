@@ -28,7 +28,7 @@ namespace EUIFramework
     public class NormalSingleton<T>
         where T : NormalSingleton<T>
     {
-        private NormalSingleton() { }
+        protected NormalSingleton() { }
 
         private static T _instance = null;
 

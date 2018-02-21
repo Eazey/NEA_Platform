@@ -25,12 +25,12 @@ using UnityEngine;
 
 namespace EUIFramework
 {
-    public static class ViewController
+    public class ViewController : NormalSingleton<ViewController>
     {
         private static Dictionary<ViewName, string> _viewNameDic;
         private static Dictionary<ViewName, IView> _viewObjDic;
 
-        static ViewController()
+        private ViewController()
         {
             _viewObjDic = new Dictionary<ViewName, IView>();
             _viewNameDic = new Dictionary<ViewName, string>();
@@ -79,6 +79,8 @@ namespace EUIFramework
                 _viewObjDic.Add(name, view);
         }
 
+        public static Transform RootCanvas { get; set; }
+
         public static void RegisterAllView(Transform root)
         {
             for (int i = 0; i < root.childCount; i++)
@@ -95,7 +97,15 @@ namespace EUIFramework
             }
         }
 
-        public static void OpenView(ViewName open)
+        public static void ClearAllView()
+        {
+            if (_viewObjDic != null)
+                _viewObjDic.Clear();
+            else
+                _viewObjDic = new Dictionary<ViewName, IView>();
+        }
+
+        public static void OpenView(ViewName open, Transform parent = null)
         {
             if (isExistView(open))
             {
@@ -110,7 +120,7 @@ namespace EUIFramework
             string path = Utility.Path.GetViewPath(open.ToString());
 
             GameObject go;
-            if (!AssetManager.ResourceLoadObj(path, out go))
+            if (!AssetManager.ResourceLoadObj(path, out go, parent))
             {
                 Debug.LogError(path + ": have not be found prefab: " + open.ToString());
                 return;

@@ -2,8 +2,8 @@
 /* | ---   NEA_Platform   --- | */
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
-//  TestView.cs
-//  Create on 2/17/2018
+//  NotifyHandler.cs
+//  Create on 2/21/2018
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
@@ -18,29 +18,12 @@
 /* Script Overview: 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-using EUIFramework;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-
-
-public class TestView : ViewBase
+namespace EUIFramework
 {
-
-    void Awake()
-    {
-        ViewController.RegisterAllView(transform);
-    }
-
-    protected override void Init()
-    {
-        Debug.Log("Init");
-    }
-
-    protected override void Clear()
-    {
-        Debug.Log("Clear");
-    }
+    /// <summary>
+    /// 消息通知方法委托
+    /// </summary>
+    /// <param name="sender"> 发送者 </param>
+    /// <param name="parameter"> 参数 </param>
+    public delegate void NotifyHandler(object sender, object parameter);
 }

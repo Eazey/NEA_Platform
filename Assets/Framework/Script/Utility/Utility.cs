@@ -32,10 +32,16 @@ namespace EUIFramework
         public static class Path
         {
             public static string ViewRoot { get { return "View/"; } }
+            public static string CruxRoot { get { return "Crux/"; } }
 
             public static string GetViewPath(string viewName)
             {
                 return ConnectPath(ViewRoot, viewName);
+            }
+
+            public static string GetCruxPath(string curxName)
+            {
+                return ConnectPath(CruxRoot, curxName);
             }
 
             public static string ConnectPath(string root, string subset)

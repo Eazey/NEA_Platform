@@ -25,7 +25,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using EUIFramework;
 
-public class AssetManager
+public static class AssetManager
 {
     public static bool ResourceLoad<TOut>(string path, out TOut asset)
         where TOut : UnityEngine.Object

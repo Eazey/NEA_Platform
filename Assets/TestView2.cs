@@ -25,7 +25,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using EUIFramework;
 
-public class TestView2 : View_Base {
+public class TestView2 : ViewBase
+{
 
 	// Bind Component 
 	void Awake () {

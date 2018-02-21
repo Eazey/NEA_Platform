@@ -28,7 +28,7 @@ using UnityEngine.UI;
 public class TestButton : MonoBehaviour {
 
     [SerializeField]
-    private View_Base view;
+    private ViewBase view;
 
     private bool isOpen = false;
 
