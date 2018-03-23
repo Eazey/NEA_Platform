@@ -25,7 +25,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace EUIFramework
+namespace EGUIFramework
 {
     public class MonoSingleton<T> : MonoBehaviour
         where T : MonoSingleton<T>

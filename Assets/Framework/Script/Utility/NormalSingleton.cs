@@ -23,7 +23,7 @@ using System;
 using UnityEngine;
 using System.Reflection;
 
-namespace EUIFramework
+namespace EGUIFramework
 {
     public class NormalSingleton<T>
         where T : NormalSingleton<T>

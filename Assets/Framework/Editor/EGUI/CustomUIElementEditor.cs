@@ -1,10 +1,22 @@
 ﻿
-// ------------------------------ //
-// Product Name : CandyWorld
-// Company Name : MOESTONE
-// Author  Name : Eazey Wang
-// Editor  Data : 1/9/2018
-// ------------------------------ //
+/* | ---   NEA_Platform   --- | */
+
+/*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
+//  AssetManager.cs
+//  Create on 3/23/2018
+/*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
+
+/*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
+/*  Script Editor: EazeyWang                      
+/*	Blog   Adress: http://blog.csdn.net/eazey_wj     
+/*	GitHub Adress: https://github.com/Eazey 		 
+/*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
+
+/*	 Either none appetency, or determined to win.    */
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * */
+/* Script Overview: 
+/* * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System.Collections;
 using System.Collections.Generic;
@@ -12,7 +24,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
 
-namespace MoeStoneFramework
+namespace EGUIFramework
 {
 
 	public class CustomUIElementEditor : Editor

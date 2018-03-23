@@ -1,10 +1,22 @@
 ﻿
-// ------------------------------ //
-// Product Name : MovieWorld
-// Company Name : MOESTONE
-// Author  Name : Eazey Wang
-// Editor  Data : 11/27/2017
-// ------------------------------ //
+/* | ---   NEA_Platform   --- | */
+
+/*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
+//  AssetManager.cs
+//  Create on 3/23/2018
+/*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
+
+/*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
+/*  Script Editor: EazeyWang                      
+/*	Blog   Adress: http://blog.csdn.net/eazey_wj     
+/*	GitHub Adress: https://github.com/Eazey 		 
+/*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
+
+/*	 Either none appetency, or determined to win.    */
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * */
+/* Script Overview: 
+/* * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System.Collections;
 using System.Collections.Generic;
@@ -21,7 +33,7 @@ public class ScriptTemplatesReplaceEditor : UnityEditor.AssetModificationProcess
         int index = path.LastIndexOf(".");
         string file = path.Substring(index);
 
-        if (file != ".cs" && file != ".js" && file != ".boo")
+        if (file != ".cs" && file != ".js")
             return;
 
         string fileExtension = file;

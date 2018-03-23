@@ -25,13 +25,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace EUIFramework
+namespace EGUIFramework
 {
     public class ViewBase : MonoBehaviour, IView
     {
         [SerializeField]
         protected ViewName _viewName;
         public ViewName Name { get { return _viewName; } }
+
+        protected ViewContent _viewContent;
 
         public void Open()
         {
@@ -45,11 +47,6 @@ namespace EUIFramework
             gameObject.SetActive(false);
         }
 
-        protected void Transer(ViewName viewName)
-        {
-            Close();
-            ViewController.OpenView(viewName);
-        }
 
         protected virtual void Init()
         {

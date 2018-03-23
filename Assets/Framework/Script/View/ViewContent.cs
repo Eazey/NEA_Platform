@@ -2,8 +2,8 @@
 /* | ---   NEA_Platform   --- | */
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
-//  TestView2.cs
-//  Create on 2/19/2018
+//  ViewContent.cs
+//  Create on 3/23/2018
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
@@ -25,8 +25,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using EGUIFramework;
 
-public class TestView2 : ViewBase
-{
+public class ViewContent : MonoBehaviour {
 
 	// Bind Component 
 	void Awake () {

@@ -23,35 +23,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using EUIFramework;
+using EGUIFramework;
 
-public static class AssetManager
+namespace EGUIFramework
 {
-    public static bool ResourceLoad<TOut>(string path, out TOut asset)
-        where TOut : UnityEngine.Object
+    public static class AssetManager
     {
-        bool result = false;
-        asset = Resources.Load<TOut>(path);
-        if (asset != null)
-            result =  true;
-        return result;
-    }
-
-    public static bool ResourceLoadObj(string path, out GameObject go, Transform parent = null)
-    {
-        bool result = false;
-        go = null;
-
-        GameObject prefab;
-        if (ResourceLoad<GameObject>(path, out prefab))
+        public static bool ResourceLoad<TOut>(string path, out TOut asset)
+            where TOut : UnityEngine.Object
         {
-            if (parent != null)
-                go = GameObject.Instantiate(prefab, parent);
-            else
-                go = GameObject.Instantiate(prefab);
-
-            Resources.UnloadAsset(prefab);
+            bool result = false;
+            asset = Resources.Load<TOut>(path);
+            if (asset != null)
+                result = true;
+            return result;
         }
-        return result;
+
+        public static bool ResourceLoadObj(string path, out GameObject go, Transform parent = null)
+        {
+            bool result = false;
+            go = null;
+
+            GameObject prefab;
+            if (ResourceLoad<GameObject>(path, out prefab))
+            {
+                if (parent != null)
+                    go = GameObject.Instantiate(prefab, parent);
+                else
+                    go = GameObject.Instantiate(prefab);
+
+                Resources.UnloadAsset(prefab);
+            }
+            return result;
+        }
     }
 }
+
+

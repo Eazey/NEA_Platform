@@ -24,7 +24,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-namespace EUIFramework
+namespace EGUIFramework
 {
     public class NotifyCenter
     {

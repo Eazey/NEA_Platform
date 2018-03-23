@@ -19,9 +19,13 @@
  * 界面显示隐藏的接口
 /* * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-public interface IView
+namespace EGUIFramework
 {
-    ViewName Name { get; }
-    void Open();
-    void Close();
+    public interface IView
+    {
+        ViewName Name { get; }
+        void Open();
+        void Close();
+    }
 }
+

@@ -3,7 +3,7 @@
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
 //  AssetManager.cs
-//  Create on 2/20/2018
+//  Create on 3/23/2018
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
@@ -24,7 +24,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
 
-namespace MoeStoneFramework
+namespace EGUIFramework
 {
 
 	public class CreateOptimizeUIEditor : Editor {

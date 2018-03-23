@@ -2,8 +2,8 @@
 /* | ---   NEA_Platform   --- | */
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
-//  TestView2.cs
-//  Create on 2/19/2018
+//  PlazeControl.cs
+//  Create on 3/23/2018
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
@@ -25,16 +25,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using EGUIFramework;
 
-public class TestView2 : ViewBase
-{
+public class PlazeControl : ViewTitleControl {
 
-	// Bind Component 
-	void Awake () {
-		
-	}
-	
-	// Init Function
-	void Start () {
-		
-	}
+    [SerializeField]
+    private Button _newsBtn;
+    [SerializeField]
+    private Button _focusBtn;
+
+    public override void Init()
+    {
+        _newsBtn.onClick.Invoke();
+    }
 }

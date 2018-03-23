@@ -23,7 +23,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace EUIFramework
+namespace EGUIFramework
 {
     public class ViewController : NormalSingleton<ViewController>
     {

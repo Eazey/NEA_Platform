@@ -18,7 +18,7 @@
 /* Script Overview: 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-using EUIFramework;
+using EGUIFramework;
 using System;
 using System.Collections;
 using System.Collections.Generic;

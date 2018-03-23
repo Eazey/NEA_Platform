@@ -18,7 +18,7 @@
 /* Script Overview: 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-namespace EUIFramework
+namespace EGUIFramework
 {
     /// <summary>
     /// 消息通知方法委托
