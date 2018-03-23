@@ -2,7 +2,7 @@
 /* | ---   NEA_Platform   --- | */
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
-//  PlazeControl.cs
+//  CustomButton.cs
 //  Create on 3/23/2018
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
@@ -19,13 +19,26 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using EGUIFramework;
+using UnityEngine.EventSystems;
 
-public class PlazeControl : ViewTitleControl {
+public class CustomButton : MonoBehaviour, IPointerDownHandler,IPointerUpHandler,IPointerClickHandler{
 
-    
+    public Button.ButtonClickedEvent onClick;
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        onClick.Invoke();
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        
+    }
 }

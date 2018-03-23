@@ -18,9 +18,6 @@
 /* Script Overview: 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using EGUIFramework;
@@ -28,22 +25,49 @@ using EGUIFramework;
 public class View_Plaza : ViewBase {
 
     [SerializeField]
-    private Button _newsBtn;
+    private TagButton _newsBtn;
     [SerializeField]
-    private Button _focusBtn;
+    private TagButton _focusBtn;
+
+
+    // data
+    
+
+    private void FirstNews()
+    {
+        // if data == null
+        // refreash
+
+
+    }
+
+    private void SecondNews()
+    {
+        // refreash
+    }
+
+    private void FirstFocus()
+    {
+        // if data == null
+        // refreash
+
+
+    }
+
+    private void SecondFocus()
+    {
+        // refreash
+    }
 
     void Awake()
     {
+        //_newsBtn.Init()
+
         FirstLoad();
     }
     
     private void FirstLoad()
     {
-        _newsBtn.onClick.Invoke();
-    }
-
-    protected override void Init()
-    {
-        
+        _newsBtn.EnableBtn();
     }
 }
