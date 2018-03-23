@@ -1,10 +1,22 @@
 ﻿
-// ------------------------------ //
-// Product Name : CandyWorld
-// Company Name : MOESTONE
-// Author  Name : Eazey Wang
-// Editor  Data : 1/9/2018
-// ------------------------------ //
+/* | ---   NEA_Platform   --- | */
+
+/*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
+//  AssetManager.cs
+//  Create on 2/20/2018
+/*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
+
+/*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
+/*  Script Editor: EazeyWang                      
+/*	Blog   Adress: http://blog.csdn.net/eazey_wj     
+/*	GitHub Adress: https://github.com/Eazey 		 
+/*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
+
+/*	 Either none appetency, or determined to win.    */
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * */
+/* Script Overview: 
+/* * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System.Collections;
 using System.Collections.Generic;
@@ -57,10 +69,10 @@ namespace MoeStoneFramework
                     Text text = go.GetComponent<Text>();
                     text.raycastTarget = false;   
                     text.text = "New Text";
-                    text.fontSize = 50;
+                    text.fontSize = 40;
                     text.alignment = TextAnchor.MiddleCenter;
                     text.color = Color.black;
-                    text.font = Resources.Load("Font/CandyFont") as Font;
+                    text.font = Resources.Load("Font/YaHei") as Font;
 
                     RectTransform rect = go.GetComponent<RectTransform>();
                     rect.localPosition = Vector3.zero;
@@ -94,15 +106,10 @@ namespace MoeStoneFramework
                     rect.localPosition = Vector3.zero;
                     rect.localRotation = Quaternion.Euler(Vector3.zero);
                     rect.localScale = Vector3.one;
-                    //rect.anchorMax = Vector2.one;
-                    //rect.anchorMin = Vector2.zero;
-                    //rect.pivot = 0.5f * Vector2.one;
-                    //rect.offsetMax = Vector2.zero;
-                    //rect.offsetMin = Vector2.zero;
                     rect.anchorMax = 0.5f * Vector2.one;
                     rect.anchorMin = 0.5f * Vector2.one;
                     rect.pivot = 0.5f * Vector2.one;
-                    rect.sizeDelta = new Vector2(1920, 1080);
+                    rect.sizeDelta = new Vector2(1080, 1920);
 
                     Selection.activeTransform = go.transform;
                 }
