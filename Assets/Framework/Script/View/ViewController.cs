@@ -92,7 +92,7 @@ namespace EGUIFramework
                     Debug.LogWarning(child.name + " not inherit to 'IView'");
                     continue;
                 }
-                view.Close();
+                //view.Close();
                 _viewObjDic.Add(view.Name, view);
             }
         }

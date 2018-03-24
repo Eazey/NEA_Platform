@@ -21,6 +21,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using EGUIFramework;
+using System.Collections;
 
 public class View_Plaza : ViewBase {
 
@@ -28,7 +29,6 @@ public class View_Plaza : ViewBase {
     private TagButton _newsBtn;
     [SerializeField]
     private TagButton _focusBtn;
-
 
     // data
     
@@ -61,9 +61,10 @@ public class View_Plaza : ViewBase {
 
     void Awake()
     {
-        //_newsBtn.Init()
+        IEnumerator getData = ServerRequest.GetInstance().GetData("plaza", "csv/", FileType.CSV);
+        StartCoroutine(getData);
 
-        FirstLoad();
+        //FirstLoad();
     }
     
     private void FirstLoad()

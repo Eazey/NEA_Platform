@@ -27,7 +27,5 @@ using UnityEngine.UI;
 
 public enum ViewName
 {
-    View_1,
-    View_2,
-    View_3,
+    View_Main,
 }

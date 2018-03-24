@@ -53,6 +53,8 @@ public class GameRoot : MonoBehaviour
         //if (manager.GetComponent<GameManager>() == null)
         //    manager.AddComponent<GameManager>();
 
+        ViewController.OpenView(ViewName.View_Main);
+
         Destroy(gameObject);
     }
 
