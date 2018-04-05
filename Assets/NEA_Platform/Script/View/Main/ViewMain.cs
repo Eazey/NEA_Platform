@@ -2,8 +2,8 @@
 /* | ---   NEA_Platform   --- | */
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
-//  ViewControl.cs
-//  Create on 3/23/2018
+//  ViewMain.cs
+//  Create on 4/2/2018
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
@@ -25,15 +25,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using EGUIFramework;
 
-public class ViewControl : MonoBehaviour {
+public class ViewMain : ViewBase {
 
-	// Bind Component 
-	void Awake () {
-		
-	}
-	
-	// Init Function
-	void Start () {
-		
-	}
+    protected bool _exitData = false;
 }

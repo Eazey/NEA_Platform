@@ -28,43 +28,68 @@ using UnityEngine.Events;
 
 public class TagButton : CustomButton {
 
+
     [SerializeField]
     private Text _nameTex;
 
+    [Header("Color")]
+    [SerializeField]
+    private Color _normalColor;
+    [SerializeField]
+    private Color _highColor;
+
     bool isSelect = false;
 
-    UnityAction unSelectAction;
+    //UnityAction unSelectAction;
+    //UnityAction selectAction;
+
     UnityAction selectAction;
+    UnityAction refreshAction;
+
+    public TagBtnStatusDelegate StatusHandler;
+
 
     void Awake()
     {
-        onClick.AddListener(OnTagClick);
+        onClick.AddListener(OnTagBtnClick);
     }
 
-    public void EnableBtn()
+    public void Response()
     {
-        OnTagClick();
+        OnTagBtnClick();
     }
 
-    private void OnTagClick()
+    private void OnTagBtnClick()
     {
-        if (isSelect)
-        {
+        if (StatusHandler == null)
+            throw new Exception("StatusHandler 未被指定");
+
+        StatusHandler(this);
+    }
+
+    public void SelectStatus()
+    {
+        if (selectAction != null)
             selectAction();
-        }
-        else
-        {
-            unSelectAction();
-            TagButtonStatus.GetInstance().Cache(this);
-            SelectShow(true);
-        }
+
+        SelectShow(true);
+
+        Debug.Log("I'm select! " + name);
+    }
+
+    public void RefreshStatus()
+    {
+        if (refreshAction != null)
+            refreshAction();
+
+        Debug.Log("I'm freash! " + name);
     }
 
 
-    public void Init(UnityAction unSelect, UnityAction select)
+    public void Init(UnityAction select, UnityAction refresh)
     {
-        unSelectAction = unSelect;
         select = selectAction;
+        refresh = refreshAction;
     }
 
     public void Reset()
@@ -73,32 +98,78 @@ public class TagButton : CustomButton {
         SelectShow(false);
     }
 
-    public void Animation(float value)
-    {
 
+    public void SelectShow(bool isHigh)
+    {
+        Debug.Log("Button：" + name + ". 高亮状态：" + isHigh);
+
+        Color orgin = isHigh ? _normalColor : _highColor;
+        Color end = isHigh ? _highColor : _normalColor;
+
+        _colorChange = ChangeColor(orgin, end);
+        StartCoroutine(_colorChange);
     }
 
-    public void SelectShow(bool isShow)
+    IEnumerator _colorChange;
+
+    IEnumerator ChangeColor(Color orgin, Color end)
     {
-        if (isShow)
-            _nameTex.color = Color.red;
-        else
-            _nameTex.color = Color.black;
+        for(int i = 0; i < 20; i++)
+        {
+            _nameTex.color = Color.Lerp(orgin, end, i * 0.1f);
+            yield return new WaitForEndOfFrame();
+        }
+
+        StopCoroutine(_colorChange);
+        _colorChange = null;
+    }
+
+    public override bool Equals(object other)
+    {
+        if (other == null)
+            return false;
+
+        var otherBtn = (TagButton)other;
+        return name == otherBtn.name;
     }
 }
 
-public class TagButtonStatus : NormalSingleton<TagButtonStatus>
-{
-    private TagButtonStatus() { }
+public delegate void TagBtnStatusDelegate(TagButton btn);
 
+public class TagBtnStateManager
+{
     private TagButton _curBtn;
 
-    public void Cache(TagButton btn)
-    {
-        if (_curBtn != null)
-            _curBtn.Reset();
 
-        _curBtn = btn;
+    /// <summary>
+    /// 
+    /// 更新缓存  
+    /// 
+    /// 并返回缓存是否被更新
+    /// 
+    /// </summary>
+    /// <param name="btn"> 新的标签按钮对象 </param>
+    /// <returns> 是否被更新 </returns>
+    public void UpdateCache(TagButton btn)
+    {
+       
+        bool isUpdate = !(btn.Equals(_curBtn));
+
+        if (isUpdate || _curBtn == null)
+        {
+            if (_curBtn != null)
+                _curBtn.Reset();
+
+            _curBtn = btn;
+            _curBtn.SelectStatus();     
+        }
+        else
+            _curBtn.RefreshStatus();
     }
 
+
+    public void Response()
+    {
+        _curBtn.Response();
+    }
 }

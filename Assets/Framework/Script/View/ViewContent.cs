@@ -25,15 +25,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using EGUIFramework;
 
-public class ViewContent : MonoBehaviour {
+public abstract class ViewContent : MonoBehaviour {
 
-	// Bind Component 
-	void Awake () {
-		
-	}
-	
-	// Init Function
-	void Start () {
-		
-	}
+    public abstract void Refreash();
 }

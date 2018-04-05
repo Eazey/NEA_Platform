@@ -23,52 +23,23 @@ using UnityEngine.UI;
 using EGUIFramework;
 using System.Collections;
 
-public class View_Plaza : ViewBase {
+public class View_Plaza : ViewMain {
 
+    [Header("Action")]
     [SerializeField]
     private TagButton _newsBtn;
     [SerializeField]
     private TagButton _focusBtn;
 
-    // data
-    
-
-    private void FirstNews()
-    {
-        // if data == null
-        // refreash
-
-
-    }
-
-    private void SecondNews()
-    {
-        // refreash
-    }
-
-    private void FirstFocus()
-    {
-        // if data == null
-        // refreash
-
-
-    }
-
-    private void SecondFocus()
-    {
-        // refreash
-    }
+    private TagBtnStateManager _btnStatus;
 
     void Awake()
     {
-        IEnumerator getData = ServerRequest.GetInstance().GetData("plaza", "csv/", FileType.CSV);
-        StartCoroutine(getData);
+        _btnStatus = new TagBtnStateManager();
+        _newsBtn.StatusHandler += _btnStatus.UpdateCache;
+        _focusBtn.StatusHandler += _btnStatus.UpdateCache;
 
-        //FirstLoad();
+        _newsBtn.Response();
     }
-    
-    private void FirstLoad()
-    {
-        _newsBtn.EnableBtn();
-    }
+
 }

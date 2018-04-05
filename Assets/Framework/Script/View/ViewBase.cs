@@ -33,6 +33,8 @@ namespace EGUIFramework
         protected ViewName _viewName;
         public ViewName Name { get { return _viewName; } }
 
+        [Header("Component")]
+        [SerializeField]
         protected ViewContent _viewContent;
 
         public void Open()

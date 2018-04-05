@@ -2,8 +2,8 @@
 /* | ---   NEA_Platform   --- | */
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
-//  ViewTitle.cs
-//  Create on 3/23/2018
+//  NewBehaviourScript.cs
+//  Create on 4/2/2018
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
@@ -25,9 +25,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using EGUIFramework;
 
-public class ViewTitleControl : MonoBehaviour {
+public class NewBehaviourScript : MonoBehaviour {
 
-    protected ViewContent _viewContent;
-
-    public  virtual void Init() { }
+	// Bind Component 
+	void Awake () {
+		
+	}
+	
+	// Init Function
+	void Start () {
+		
+	}
 }
