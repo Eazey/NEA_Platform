@@ -2,8 +2,8 @@
 /* | ---   NEA_Platform   --- | */
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
-//  View_Plaza.cs
-//  Create on 3/23/2018
+//  PlazaContent.cs
+//  Create on 4/5/2018
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
@@ -18,30 +18,18 @@
 /* Script Overview: 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * */
 
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using EGUIFramework;
-using System.Collections;
 
-public class View_Plaza : ViewMain {
-
-    [Header("Action")]
-    [SerializeField]
-    private TagButton _newsBtn;
-    [SerializeField]
-    private TagButton _focusBtn;
-
-
-    //[Header("Prefab")]
-
-    private TagBtnStateManager _btnStatus;
-
-    void Awake()
+public class PlazaContent : ViewContent
+{
+    public override void Refreash()
     {
-        _btnStatus = new TagBtnStateManager();
-        _newsBtn.StatusHandler += _btnStatus.UpdateCache;
-        _focusBtn.StatusHandler += _btnStatus.UpdateCache;
-
-        _newsBtn.Response();
+        // 去拿广场的最新数据  需要请求网络连接
+        
     }
 }
