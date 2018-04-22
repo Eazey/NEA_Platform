@@ -34,8 +34,14 @@ public class PlazaCell : ViewCell {
     private Text _theme;
     [SerializeField]
     private Text _time;
+
+    [Header("Action")]
     [SerializeField]
-    private Text _content;
+    private Button _like_Btn;
+    [SerializeField]
+    private Button _comment_Btn;
+    [SerializeField]
+    private Button _collect_Btn;
 
     [Header("Rect")]
     [SerializeField]
@@ -45,12 +51,10 @@ public class PlazaCell : ViewCell {
     // 这里根据数据类型（纯文字，图文，文章等）的不同应该重载
     // 该对象应该作为参数发给数据类 由数据类决策方法
 
-    public void InitCell(Sprite icon, string theme, string time,
-        string content)
+    public void InitCell(Sprite icon, string theme, string time)
     {
         _icon.sprite = icon;
         _theme.text = theme;
         _time.text = time;
-        _content.text = content;
     }
 }
