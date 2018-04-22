@@ -70,7 +70,7 @@ namespace EGUIFramework
                     text.fontSize = 40;
                     text.alignment = TextAnchor.MiddleCenter;
                     text.color = Color.black;
-                    text.font = Resources.Load("Font/CandyFont") as Font;
+                    text.font = Resources.Load("Font/YaHei") as Font;
 
                     RectTransform rect = go.GetComponent<RectTransform>();
                     rect.localPosition = Vector3.zero;
@@ -115,7 +115,7 @@ namespace EGUIFramework
                     text.fontSize = 50;
                     text.alignment = TextAnchor.MiddleCenter;
                     text.color = Color.black;
-                    text.font = Resources.Load("Font/CandyFont") as Font;
+                    text.font = Resources.Load("Font/YaHei") as Font;
 
                     RectTransform textRect = child.GetComponent<RectTransform>();
                     textRect.localPosition = Vector3.zero;
