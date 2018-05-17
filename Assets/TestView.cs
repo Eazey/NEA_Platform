@@ -31,7 +31,7 @@ public class TestView : ViewBase
 
     void Awake()
     {
-        ViewController.RegisterAllView(transform);
+        ViewController.GetInstance().RegisterAllView(transform);
     }
 
     protected override void Init()

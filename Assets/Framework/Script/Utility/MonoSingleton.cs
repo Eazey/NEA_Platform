@@ -44,7 +44,9 @@ namespace EGUIFramework
                     GameObject manager = GameObject.Find(GAME_MANAGER);
                     if (manager == null)
                     {
-                        Debug.LogError("Please check the pbject named 'Root' whether be created.");
+                        Debuger.Log
+                            (LogType.Error, "Please check the pbject "
+                            + "named 'Root' whether be created.");
                         manager = new GameObject(GAME_MANAGER);
                         DontDestroyOnLoad(manager);
                     }

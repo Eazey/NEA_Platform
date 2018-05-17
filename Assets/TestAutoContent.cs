@@ -42,12 +42,13 @@ public class TestAutoContent : MonoBehaviour {
 	// Init Function
 	void Start () {
 
-        _text.text = "这是测试的话！这是测试的话！这是测试的话！这是测试的话！这是测试的话！这是测试的话！这是测试的话！这是测试的话！这是测试的话！这是测试的话！这是测试的话！这是测试的话！这是测试的话！这是测试的话！这是测试的话！这是...";
+        _text.text = "这是测试的话！这是测试的话！这是测试的话！这是测试的话！这是测试的话！这是测试的话！这是测试的话！这是测试的话！这是测试的话！这是测试的话！这是测试的话！这是测试的话！这是测试的话！这是测试的话！这是测试的话！这是测.....";
         Debug.Log(_text.preferredHeight);
         Debug.Log(_text.minHeight);
         Debug.Log(_text.flexibleHeight);
 
         string str = _text.text;
+        Debug.Log(str.Length);
         byte[] buffers = System.Text.Encoding.Default.GetBytes(str);
         Debug.Log(buffers.Length);
     }

@@ -21,26 +21,13 @@ GameObject:
   - component: {fileID: 224224690401119612}
   - component: {fileID: 222823893348568018}
   - component: {fileID: 114467982156415692}
-  - component: {fileID: 114340499146855164}
   m_Layer: 0
-  m_Name: Text_Content
+  m_Name: PlazaContent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &114340499146855164
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1875620322173990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8a245cee388d804382451782a32c13e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _char: 218
 --- !u!114 &114467982156415692
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -73,7 +60,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u8FD9\u662F\u6D4B\u8BD5\u7684\u8BDD\uFF01\u8FD9\u662F\u6D4B\u8BD5\u7684\u8BDD\uFF01\u8FD9\u662F\u6D4B\u8BD5\u7684\u8BDD\uFF01\u8FD9\u662F\u6D4B\u8BD5\u7684\u8BDD\uFF01\u8FD9\u662F\u6D4B\u8BD5\u7684\u8BDD\uFF01\u8FD9\u662F\u6D4B\u8BD5\u7684\u8BDD\uFF01\u8FD9\u662F\u6D4B\u8BD5\u7684\u8BDD\uFF01\u8FD9\u662F\u6D4B\u8BD5\u7684\u8BDD\uFF01\u8FD9\u662F\u6D4B\u8BD5\u7684\u8BDD\uFF01\u8FD9\u662F\u6D4B\u8BD5\u7684\u8BDD\uFF01\u8FD9\u662F\u6D4B\u8BD5\u7684\u8BDD\uFF01\u8FD9\u662F\u6D4B\u8BD5\u7684\u8BDD\uFF01\u8FD9\u662F\u6D4B\u8BD5\u7684\u8BDD\uFF01\u8FD9\u662F\u6D4B\u8BD5\u7684\u8BDD\uFF01\u8FD9\u662F\u6D4B\u8BD5\u7684\u8BDD\uFF01\u8FD9\u662F\u6D4B\u8BD5"
+  m_Text: 
 --- !u!222 &222823893348568018
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -95,6 +82,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 880, y: 265.38}
+  m_AnchoredPosition: {x: 0.00012207031, y: -0.000030517578}
+  m_SizeDelta: {x: 860, y: 265.38}
   m_Pivot: {x: 0, y: 1}

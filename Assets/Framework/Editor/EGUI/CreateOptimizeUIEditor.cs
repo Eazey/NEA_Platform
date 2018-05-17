@@ -29,6 +29,31 @@ namespace EGUIFramework
 
 	public class CreateOptimizeUIEditor : Editor {
 
+        [MenuItem("GameObject/UI/View")]
+        static void CreatView()
+        {
+            if (Selection.activeTransform)
+            {
+                if (Selection.activeTransform.GetComponentInParent<Canvas>())
+                {
+                    GameObject go = new GameObject("View_", typeof(RectTransform));
+                    go.transform.SetParent(Selection.activeTransform);
+
+                    RectTransform rect = go.GetComponent<RectTransform>();
+                    rect.localPosition = Vector3.zero;
+                    rect.localRotation = Quaternion.Euler(Vector3.zero);
+                    rect.localScale = Vector3.one;
+                    rect.anchorMax = 0.5f * Vector2.one;
+                    rect.anchorMin = 0.5f * Vector2.one;
+                    rect.pivot = 0.5f * Vector2.one;
+                    rect.sizeDelta = new Vector2(1080, 2160);
+
+                    Selection.activeTransform = go.transform;
+                }
+            }
+        }
+
+
         [MenuItem("GameObject/UI/Optimize Image")]
         static void CreatImage()
         {

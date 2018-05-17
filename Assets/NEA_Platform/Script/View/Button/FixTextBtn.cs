@@ -62,6 +62,8 @@ public class FixTextBtn : CustomButton {
             _packupAct();
             _nameText.text = "全文";
         }
+
+        isUnfold = !isUnfold;
     }
 
     void OnDestroy()

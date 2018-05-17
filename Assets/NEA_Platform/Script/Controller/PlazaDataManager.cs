@@ -2,8 +2,8 @@
 /* | ---   NEA_Platform   --- | */
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
-//  ViewCell.cs
-//  Create on 4/8/2018
+//  PlazaDataManager.cs
+//  Create on 5/17/2018
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
@@ -25,7 +25,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using EGUIFramework;
 
-public abstract class ViewCell : MonoBehaviour {
+public class PlazaDataManager : MonoBehaviour {
 
-    public abstract void InitCell(PlazaData data);
+	// Bind Component 
+	void Awake () {
+		
+	}
+	
+	// Init Function
+	void Start () {
+		
+	}
 }

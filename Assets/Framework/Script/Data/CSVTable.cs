@@ -18,6 +18,7 @@
 /* Script Overview: 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * */
 
+using EGUIFramework;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -160,13 +161,14 @@ public class CSVTable : IEnumerable
             build.Append(",");
         }
         build = build.Remove(build.Length - 1, 1);
-
         if (_dataObjDic.Count == 0)
         {
-            Debug.LogWarning("The table is empty, fuction named 'GetContent()' will just retrun key's list.");
+            Debuger.Log(EGUIFramework.LogType.Warnning,
+                "The table is empty, " +
+                "fuction named 'GetContent()' " +
+                "will just retrun key's list.");
             return build.ToString();
         }
-
         foreach (CSVDataObject data in _dataObjDic.Values)
         {
             build.Append("\n");
@@ -179,7 +181,6 @@ public class CSVTable : IEnumerable
             }
             build = build.Remove(build.Length - 1, 1);
         }
-
         return build.ToString();
     }
 

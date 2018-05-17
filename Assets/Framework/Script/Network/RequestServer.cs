@@ -41,18 +41,19 @@ namespace EGUIFramework
             if (ipFile == null)
                 throw new Exception(path + "文件未能加载 " + " 目标：ip地址");
             _ip = ipFile.text;
-            Debug.Log(_ip);
+            Debuger.Log(LogType.Normal, _ip);
         }
 
 
         private static bool CheckError(string error)
         {
             bool isError = !string.IsNullOrEmpty(error);
-            if (!string.IsNullOrEmpty(error) )
-                Debug.LogError(error);
+            if (!string.IsNullOrEmpty(error))
+                Debuger.Log(LogType.Error, error);
 
             return isError;
         }
+
 
         public static IEnumerator DownLoad(string path, ReqServerDelegate callback)
         {
@@ -78,5 +79,3 @@ namespace EGUIFramework
         }
     }
 }
-
-

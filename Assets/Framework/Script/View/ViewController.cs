@@ -36,6 +36,8 @@ namespace EGUIFramework
             _viewNameDic = new Dictionary<ViewName, string>();
 
             RegisterViewName();
+
+            Debug.Log("RegisterViewName!");
         }
 
         private static void RegisterViewName()
@@ -49,7 +51,7 @@ namespace EGUIFramework
             Debug.Log("Name dic have count:" + _viewNameDic.Count);
         }
 
-        private static bool isExistView(ViewName name)
+        private bool isExistView(ViewName name)
         {
             bool result = false;
             if (_viewObjDic.ContainsKey(name))
@@ -60,7 +62,7 @@ namespace EGUIFramework
             return result;
         }
 
-        private static bool isExistViewName(ViewName name)
+        private bool isExistViewName(ViewName name)
         {
             bool result = false;
             if (_viewNameDic.ContainsKey(name))
@@ -71,7 +73,7 @@ namespace EGUIFramework
             return result;
         }
 
-        private static void RegisterView(ViewName name, IView view)
+        private void RegisterView(ViewName name, IView view)
         {
             if (_viewObjDic.ContainsKey(name))
                 Debug.LogError(name + " already exist in dic.");
@@ -79,9 +81,9 @@ namespace EGUIFramework
                 _viewObjDic.Add(name, view);
         }
 
-        public static Transform RootCanvas { get; set; }
+        public Transform RootCanvas { get; set; }
 
-        public static void RegisterAllView(Transform root)
+        public void RegisterAllView(Transform root)
         {
             for (int i = 0; i < root.childCount; i++)
             {
@@ -97,7 +99,7 @@ namespace EGUIFramework
             }
         }
 
-        public static void ClearAllView()
+        public void ClearAllView()
         {
             if (_viewObjDic != null)
                 _viewObjDic.Clear();
@@ -105,7 +107,7 @@ namespace EGUIFramework
                 _viewObjDic = new Dictionary<ViewName, IView>();
         }
 
-        public static void OpenView(ViewName open, Transform parent = null)
+        public void OpenView(ViewName open, Transform parent = null)
         {
             if (isExistView(open))
             {
@@ -139,7 +141,7 @@ namespace EGUIFramework
             view.Open();
         }
 
-        public static void CloseView(ViewName close)
+        public void CloseView(ViewName close)
         {
             if (isExistView(close))
             {
@@ -152,7 +154,7 @@ namespace EGUIFramework
             }
         }
 
-        public static void TranserView(ViewName close, ViewName open)
+        public void TranserView(ViewName close, ViewName open)
         {
             CloseView(close);
             OpenView(open);

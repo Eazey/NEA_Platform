@@ -35,7 +35,7 @@ public class GameRoot : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("Root!!!");
+        Debuger.Log(EGUIFramework.LogType.Normal, "Root!!!");
 
         GameObject manager = GameObject.Find(MANAGER_NAME);
         if (manager == null)
@@ -45,17 +45,11 @@ public class GameRoot : MonoBehaviour
         InitRootCanvas();
         InitEventSystem();
 
+
         //清空上个场景的界面缓存
-        ViewController.ClearAllView();
+        ViewController.GetInstance().ClearAllView();
         //注册根节点下所有界面
-        ViewController.RegisterAllView(ViewController.RootCanvas);
-
-        //if (manager.GetComponent<GameManager>() == null)
-        //    manager.AddComponent<GameManager>();
-
-        ViewController.OpenView(ViewName.View_Main);
-
-        Destroy(gameObject);
+        ViewController.GetInstance().RegisterAllView(ViewController.GetInstance().RootCanvas);
     }
 
 
@@ -72,7 +66,7 @@ public class GameRoot : MonoBehaviour
             else
                 Debug.LogError("Not found canvas prefab in " + path);
         }
-        ViewController.RootCanvas = canvas.transform;
+        ViewController.GetInstance().RootCanvas = canvas.transform;
     }
 
     private void InitEventSystem()
