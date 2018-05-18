@@ -2,8 +2,8 @@
 /* | ---   NEA_Platform   --- | */
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
-//  View_Base.cs
-//  Create on 2/16/2018
+//  View_PlazaDetail.cs
+//  Create on 5/18/2018
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
@@ -16,7 +16,6 @@
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * */
 /* Script Overview: 
- * 界面基类
 /* * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -24,36 +23,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using EGUIFramework;
 
-namespace EGUIFramework
-{
-    public class ViewBase : MonoBehaviour, IView
-    {
-        [SerializeField]
-        protected ViewName _viewName;
-        public ViewName Name { get { return _viewName; } }
+public class View_PlazaDetail : ViewBase {
 
-        public void Open()
-        {
-            gameObject.SetActive(true);
-            Init();
-        }
-
-        public void Close()
-        {
-            Clear();
-            gameObject.SetActive(false);
-        }
-
-
-        protected virtual void Init()
-        {
-
-        }
-
-        protected virtual void Clear()
-        {
-
-        }
-    }
+	// Bind Component 
+	void Awake () {
+		
+	}
+	
+	// Init Function
+	void Start () {
+		
+	}
 }

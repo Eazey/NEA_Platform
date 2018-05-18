@@ -34,26 +34,25 @@ public enum DataType
     Job,
 }
 
-public class DataFactory : NormalSingleton<DataFactory>
+
+public class DataFactory : MonoSingleton<DataFactory>
 {
 
-    const string PLAZA_PATH = "datas/plaza";
+    const string PLAZA_PATH = "plaza";
     const string COMPETE_PATH = "datas/compete";
     const string JOB_PAHT = "datas/job";
 
-    private DataFactory() { }
 
+    Action<bool, string> _callback;
 
-    ReqServerDelegate _callback;
-
-    public void RequestData(DataType type, ReqServerDelegate callback)
+    public void RequestData(DataType type, Action<bool, string> callback)
     {
         _callback = callback;
 
         switch (type)
         {
             case DataType.Plaza:
-                RequestServer.DownLoad(PLAZA_PATH, ReceiveData);
+                StartCoroutine(RequestServer.DownLoad(PLAZA_PATH, ReceiveData));
                 break;
 
             case DataType.Compete:
@@ -66,8 +65,37 @@ public class DataFactory : NormalSingleton<DataFactory>
         }
     }
 
-    public void ReceiveData(WWW data)
+    private void ReceiveData(bool isSuccess, WWW data)
     {
-        
+        if (!isSuccess)
+        {
+            _callback(isSuccess, null);
+        }
+        else
+        {
+            string content = data.text;
+            _callback(isSuccess, content);
+        }
+    }
+
+    public void RequestImageData(int id, string path, Action<int, Sprite> final)
+    {
+        StartCoroutine(RequestServer.GetImage(id, path, final, ReceiveImageData));
+    }
+
+    private void ReceiveImageData(int id, WWW imageData, Action<int, Sprite> final)
+    {
+
+        if (imageData.text == "none")
+        {
+            final(id, null);
+            return;
+        }
+
+        Texture2D tex = imageData.texture;
+        Sprite sprite = null;
+        if (tex != null)
+            sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f));
+        final(id, sprite);
     }
 }

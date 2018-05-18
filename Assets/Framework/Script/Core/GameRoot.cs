@@ -45,11 +45,12 @@ public class GameRoot : MonoBehaviour
         InitRootCanvas();
         InitEventSystem();
 
-
         //清空上个场景的界面缓存
         ViewController.GetInstance().ClearAllView();
         //注册根节点下所有界面
         ViewController.GetInstance().RegisterAllView(ViewController.GetInstance().RootCanvas);
+
+        gameObject.AddComponent<DataFactory>();
     }
 
 

@@ -88,8 +88,8 @@ public class TagButton : CustomButton {
 
     public void Init(UnityAction select, UnityAction refresh)
     {
-        select = selectAction;
-        refresh = refreshAction;
+        selectAction = select;
+        refreshAction = refresh;
     }
 
     public void Reset()

@@ -26,6 +26,7 @@ using UnityEngine.UI;
 using EGUIFramework;
 using System.Text;
 
+public delegate void TryConctServerDelegate(bool isSuccess, WWW www);
 public delegate void ReqServerDelegate(WWW www);
 
 namespace EGUIFramework
@@ -55,27 +56,47 @@ namespace EGUIFramework
         }
 
 
-        public static IEnumerator DownLoad(string path, ReqServerDelegate callback)
+        public static IEnumerator DownLoad(string path, Action<bool,WWW> callback)
         {
-            string url = _ip + path;
-
+            string url = _ip + "/get?download=" + path;
+            Debug.Log(url);
             WWW www = new WWW(url);
             yield return www;
 
-            if (!CheckError(www.error) && callback != null)
-                callback(www);                
+            if(callback!=null)
+            {
+                if (!CheckError(www.error))
+                    callback(true, www);
+                else
+                    callback(false, null);
+            }              
         }
 
 
-        public static IEnumerator Upload(string path, WWWForm form, ReqServerDelegate callback = null)
+        public static IEnumerator Upload(string path, WWWForm form, Action<bool, WWW> callback = null)
         {
             string url = _ip + path;
 
             WWW www = new WWW(url, form);
             yield return www;
 
-            if (!CheckError(www.error) && callback != null)
-                callback(www);
+            if (callback != null)
+            {
+                if (!CheckError(www.error))
+                    callback(true, www);
+                else
+                    callback(false, null);
+            }
+        }
+
+        public static IEnumerator GetImage(int id,string path, Action<int, Sprite> final, Action<int,WWW, Action<int, Sprite>> middle)
+        {
+            string url = "http://127.0.0.1:8888/get/image?imagePath=" + path;
+
+            WWW www = new WWW(url);
+            yield return www;
+
+            middle(id, www, final);                
         }
     }
 }

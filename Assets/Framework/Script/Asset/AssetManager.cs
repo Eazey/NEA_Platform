@@ -30,8 +30,10 @@ namespace EGUIFramework
     public static class AssetManager
     {
         public const string FixTextBtnPath = "UI/FixTextBtn";
-        public const string PlazaCellPath = "UI/PlazaCell";
+        public const string NormalCellPath = "UI/Cell_Normal";
+        public const string TextureCellPath = "UI/Cell_Textrue";
         public const string PlazaContentPath = "UI/PlazaContent";
+        public const string ErrorPanelPath = "UI/ErrorPanel";
 
 
         private static Dictionary<string, AssetBundle> assetBundleDic;
@@ -41,10 +43,10 @@ namespace EGUIFramework
         static AssetManager()
         {
             assetBundleDic = new Dictionary<string, AssetBundle>();
-            //InitManifest();
+            InitManifest();
             defaultPath =
 #if UNITY_ANDROID
-           "jar:file://" + Application.dataPath + "!/assets/ANDROID/";
+           Application.streamingAssetsPath + "/ANDROID/";
 #elif UNITY_IOS
         Application.streamingAssetsPath + "/iOS/";
 #elif UNITY_STANDALONE

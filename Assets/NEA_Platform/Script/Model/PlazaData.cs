@@ -32,7 +32,7 @@ public class PlazaData
     public string Theme { private set; get; }
     public string Time { private set; get; }
     public string Content { private set; get; }
-    public Sprite Textures { private set; get; }
+    public Sprite Textures { set; get; }
     public int Collect { private set; get; }
     public int Like { private set; get; }
 
@@ -46,7 +46,7 @@ public class PlazaData
         Time = time;
         Content = content;
         Textures = textures;
-        like = Like;
+        Like = like;
         Collect = collect;
     }
 }
