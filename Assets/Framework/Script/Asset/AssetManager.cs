@@ -296,8 +296,8 @@ AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/ANDROID/ANDROID");
                     go = GameObject.Instantiate(prefab, parent);
                 else
                     go = GameObject.Instantiate(prefab);
-
-                Resources.UnloadAsset(prefab);
+                result = true;
+                //Resources.UnloadAsset(prefab);
             }
             return result;
         }

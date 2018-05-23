@@ -28,4 +28,8 @@ using UnityEngine.UI;
 public enum ViewName
 {
     View_Main,
+    View_Plaza,
+    View_Compete,
+    View_Job,
+    View_Me,
 }

@@ -75,7 +75,7 @@ public class PlazaDataManager : NormalSingleton<PlazaDataManager>
         }
 
         string[] dataBlock = dataStr.Split('\n');
-        for (int i = 0; i < dataBlock.Length; i++)
+        for (int i = 0; i < dataBlock.Length - 1; i++)
         {
             Dictionary<string, string> map = new Dictionary<string, string>();
             var block = dataBlock[i];
@@ -91,7 +91,7 @@ public class PlazaDataManager : NormalSingleton<PlazaDataManager>
             maps.Add(map);
         }
 
-        foreach(var map in maps)
+        foreach (var map in maps)
         {
             string idStr = map[ID];
             string iconPath = map[ICON];
@@ -106,10 +106,11 @@ public class PlazaDataManager : NormalSingleton<PlazaDataManager>
             Sprite icon = AssetManager.LoadAssetFromAssetBundle<Sprite>("icon/" + iconPath);
             int collect = int.Parse(collectStr);
             int like = int.Parse(likeStr);
-            DataFactory.GetInstance().RequestImageData(id, imagePath, SetDataImage);
-
+            
             PlazaData data = new PlazaData(id, icon, theme, time, content, null, like, collect);
             datas.Add(data);
+
+            DataFactory.GetInstance().RequestImageData(id, imagePath, SetDataImage);
         }
     }
 
@@ -117,7 +118,7 @@ public class PlazaDataManager : NormalSingleton<PlazaDataManager>
     public void SetDataImage(int id, Sprite spr)
     {
         dataSprite.Add(id, spr);
-        if(dataSprite.Count == datas.Count)
+        if (dataSprite.Count == datas.Count)
         {
             foreach(var data in datas)
             {

@@ -31,8 +31,8 @@ namespace EGUIFramework
     {
         public static class Path
         {
-            public static string ViewRoot { get { return "View/"; } }
-            public static string CruxRoot { get { return "Crux/"; } }
+            public static string ViewRoot { get { return "View"; } }
+            public static string CruxRoot { get { return "Crux"; } }
 
             public static string GetViewPath(string viewName)
             {

@@ -91,6 +91,7 @@ namespace EGUIFramework
 
         public static IEnumerator GetImage(int id,string path, Action<int, Sprite> final, Action<int,WWW, Action<int, Sprite>> middle)
         {
+
             string url = "http://127.0.0.1:8888/get/image?imagePath=" + path;
 
             WWW www = new WWW(url);

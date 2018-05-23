@@ -51,6 +51,10 @@ public class GameRoot : MonoBehaviour
         ViewController.GetInstance().RegisterAllView(ViewController.GetInstance().RootCanvas);
 
         gameObject.AddComponent<DataFactory>();
+
+        //状态栏
+        AndroidStatusBar.statusBarState = AndroidStatusBar.States.Hidden;
+        AndroidStatusBar.statusBarState = AndroidStatusBar.States.TranslucentOverContent;
     }
 
 
@@ -67,7 +71,7 @@ public class GameRoot : MonoBehaviour
             else
                 Debug.LogError("Not found canvas prefab in " + path);
         }
-        ViewController.GetInstance().RootCanvas = canvas.transform;
+        ViewController.GetInstance().RootCanvas = canvas.transform.Find("APP");
     }
 
     private void InitEventSystem()

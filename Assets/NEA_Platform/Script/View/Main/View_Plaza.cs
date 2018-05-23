@@ -83,7 +83,7 @@ public class View_Plaza : ViewBase
 
     protected override void Init()
     {
-
+        transform.SetSiblingIndex(0);
     }
 
     private void RequestNewData()
@@ -98,16 +98,17 @@ public class View_Plaza : ViewBase
 
     private void ShowData(bool isSuccess, List<PlazaData> datas)
     {
+
         // 不成功 显示个显示错误的界面
         if (!isSuccess)
         {
             Debuger.Log(EGUIFramework.LogType.Error, "Network Error!");
-            GameObject go = AssetManager.LoadGameObject(AssetManager.ErrorPanelPath);
-            go.transform.SetParent(_content.transform);
-            go.transform.localPosition = Vector3.zero;
-            go.transform.localRotation = Quaternion.identity;
-            go.transform.localScale = Vector3.one;
-            go.transform.SetSiblingIndex(0);
+            //GameObject go = AssetManager.LoadGameObject(AssetManager.ErrorPanelPath);
+            //go.transform.SetParent(_content.transform);
+            //go.transform.localPosition = Vector3.zero;
+            //go.transform.localRotation = Quaternion.identity;
+            //go.transform.localScale = Vector3.one;
+            //go.transform.SetSiblingIndex(0);
             return;
         }
         //Debuger.Log(EGUIFramework.LogType.Error, "NEtwork Success!");
@@ -116,7 +117,7 @@ public class View_Plaza : ViewBase
         {
             var temp = data;
             GameObject go;
-            if (temp.Textures != null)
+            if (temp.Textures == null)
                 go = AssetManager.LoadGameObject(AssetManager.NormalCellPath);
             else
                 go = AssetManager.LoadGameObject(AssetManager.TextureCellPath);

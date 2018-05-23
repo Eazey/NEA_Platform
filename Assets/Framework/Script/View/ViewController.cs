@@ -30,6 +30,8 @@ namespace EGUIFramework
         private static Dictionary<ViewName, string> _viewNameDic;
         private static Dictionary<ViewName, IView> _viewObjDic;
 
+        private IView _curView;
+
         private ViewController()
         {
             _viewObjDic = new Dictionary<ViewName, IView>();
@@ -57,7 +59,7 @@ namespace EGUIFramework
             if (_viewObjDic.ContainsKey(name))
                 result = true;
             else
-                Debug.LogError(name + " is not be found in dic.");
+                Debug.LogWarning(name + " is not be found in dic.");
 
             return result;
         }
@@ -113,6 +115,11 @@ namespace EGUIFramework
             {
                 IView target = _viewObjDic[open];
                 target.Open();
+
+                if (_curView != null)
+                    _curView.Close();
+                _curView = target;
+
                 return;
             }
 
@@ -138,7 +145,11 @@ namespace EGUIFramework
 
             RegisterView(view.Name, view);
 
+            if (_curView != null)
+                _curView.Close();
+
             view.Open();
+            _curView = view;
         }
 
         public void CloseView(ViewName close)

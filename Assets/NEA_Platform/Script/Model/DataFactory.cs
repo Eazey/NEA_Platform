@@ -56,11 +56,11 @@ public class DataFactory : MonoSingleton<DataFactory>
                 break;
 
             case DataType.Compete:
-                RequestServer.DownLoad(COMPETE_PATH, ReceiveData);
+                StartCoroutine(RequestServer.DownLoad(COMPETE_PATH, ReceiveData));
                 break;
 
             case DataType.Job:
-                RequestServer.DownLoad(JOB_PAHT, ReceiveData);
+                StartCoroutine(RequestServer.DownLoad(JOB_PAHT, ReceiveData));
                 break;
         }
     }
@@ -85,9 +85,9 @@ public class DataFactory : MonoSingleton<DataFactory>
 
     private void ReceiveImageData(int id, WWW imageData, Action<int, Sprite> final)
     {
-
         if (imageData.text == "none")
         {
+            
             final(id, null);
             return;
         }
@@ -96,6 +96,7 @@ public class DataFactory : MonoSingleton<DataFactory>
         Sprite sprite = null;
         if (tex != null)
             sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f));
+
         final(id, sprite);
     }
 }

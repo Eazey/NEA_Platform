@@ -2,7 +2,7 @@
 /* | ---   NEA_Platform   --- | */
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
-//  View_Main.cs
+//  View_CompeteDetail.cs
 //  Create on 5/18/2018
 /*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
@@ -25,15 +25,34 @@ using UnityEngine;
 using UnityEngine.UI;
 using EGUIFramework;
 
-public class View_Main : ViewBase {
+public class View_CompeteDetail : ViewBase {
 
-	// Bind Component 
-	void Awake () {
-		
-	}
-	
-	// Init Function
-	void Start () {
-		
-	}
+    [SerializeField]
+    private CustomButton _confirmBtn;
+    [SerializeField]
+    private CustomButton _cancelBtn;
+
+	void Awake()
+    {
+        _cancelBtn.onClick.AddListener(() => ViewController.GetInstance().CloseView(_viewName));
+    }
+}
+
+
+public class CompeteDataManager:NormalSingleton<CompeteDataManager>
+{
+    private CompeteDataManager()
+    {
+
+    }
+
+    // 比赛的ID
+    private int id;
+}
+
+public class CompeteData
+{
+    public string ID { private set; get; }
+    public string Name { private set; get; }
+    public string Content { private set; get; }
 }
